@@ -59,6 +59,20 @@ module.exports = {
                 const randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
                 message.reply(randomJoke);
                 break;
+            case '/weather':
+                const city = args.join(' ');
+                if (!city) {
+                    message.reply('Por favor, informe uma cidade. Exemplo: /weather São Paulo');
+                    return;
+                }
+                try {
+                    const weatherMessage = await weatherService.getWeather(city);
+                    message.reply(weatherMessage);
+                } catch (error) {
+                    message.reply('Não foi possível obter o clima para esta cidade. Verifique o nome e tente novamente.');
+                }
+                break;
+
 
             case '/news':
                 try {
@@ -84,7 +98,7 @@ module.exports = {
                     return;
                 }
                 try {
-                    const apiKey = 'SUA_CHAVE_DA_API'; // Obtenha uma chave em https://mymemory.translated.net/
+                    const apiKey = 'd1a2b3c4e5f6g7h8i9j0k1l2m3n4o5p6';
                     const response = await axios.get(`https://api.mymemory.translated.net/get?q=${text}&langpair=en|pt`);
                     const translatedText = response.data.responseData.translatedText;
                     message.reply(`Tradução: ${translatedText}`);
