@@ -60,20 +60,6 @@ module.exports = {
                 message.reply(randomJoke);
                 break;
 
-            case '/weather':
-                const city = args.join(' ');
-                if (!city) {
-                    message.reply('Por favor, informe uma cidade. Exemplo: /weather São Paulo');
-                    return;
-                }
-                try {
-                    const weatherMessage = await weatherService.getWeather(city);
-                    message.reply(weatherMessage);
-                } catch (error) {
-                    message.reply('Não foi possível obter o clima para esta cidade. Verifique o nome e tente novamente.');
-                }
-                break;
-
             case '/news':
                 try {
                     const apiKey = 'SUA_CHAVE_DA_API'; // Obtenha uma chave em https://newsapi.org/
