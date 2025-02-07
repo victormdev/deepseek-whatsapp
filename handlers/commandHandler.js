@@ -3,7 +3,6 @@ const logger = require('../utils/logger');
 const weatherService = require('../services/weatherService');
 const timeUtils = require('../utils/timeUtils');
 
-// Objeto para armazenar o histórico de conversas
 const conversationHistory = {};
 
 module.exports = {
@@ -76,7 +75,7 @@ module.exports = {
 
             case '/news':
                 try {
-                    const apiKey = 'SUA_CHAVE_DA_API'; // Obtenha uma chave em https://newsapi.org/
+                    const apiKey = 'q1w2e3r4t5y6u7i8o9p0a1s2d3f4g5h6j7k8';
                     const response = await axios.get(`https://newsapi.org/v2/top-headlines?country=br&apiKey=${apiKey}`);
                     const articles = response.data.articles.slice(0, 5); // Limita a 5 notícias
 
